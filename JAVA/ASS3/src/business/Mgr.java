@@ -12,7 +12,7 @@ public class Mgr extends Emp{
 	
 	@Override
 	public double computeNetSalary() {
-		return perfBonus*getBasic();
+		return perfBonus+getBasic();
 	}
 
 	public double getPerfBonus() {
