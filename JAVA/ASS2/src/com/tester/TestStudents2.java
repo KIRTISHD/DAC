@@ -26,7 +26,7 @@ public class TestStudents2 {
 			System.out.println("Kya karna hai Sarkar-");
 			System.out.println("1. Add Student");
 			System.out.println("2. Display All Students");
-			System.out.println("3. Calculate Hightest GPA");
+			System.out.println("3. Calculate Highest GPA");
 			choice=sc.nextInt();
 			switch(choice) {
 				case 1:
