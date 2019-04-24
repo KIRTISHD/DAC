@@ -18,5 +18,11 @@ public class ValidationUtils {
 			throw new ThrowErrorClass("Basic is not a multiple of 1000");
 		}
 	}
+	
+	public static void checkDept(String s) throws Exception{
+		if (s != "Sales" || s != "HR" || s != "RND" ||s != "Marketing" ) {
+			throw new ThrowErrorClass("No such Department");
+		}
+	}
 
 }
