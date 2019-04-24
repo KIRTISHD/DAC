@@ -5,8 +5,8 @@ public class Worker extends Emp{
 	private int hrsWorked;
 	private double hrsRate;
 
-	public Worker(String name, String email, int deptId, double basic, int hrsWorked, double hrsRate) {
-		super(name, email, deptId, basic);
+	public Worker(String name, String email, String dept, double basic, int hrsWorked, double hrsRate) {
+		super(name, email, dept, basic);
 		this.hrsWorked=hrsWorked;
 		this.hrsRate=hrsRate;
 	}
