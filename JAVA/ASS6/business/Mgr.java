@@ -2,8 +2,8 @@ package business;
 
 public class Mgr extends Emp{
 
-	public Mgr(String name, String email, int deptId, double basic, double perfBonus) {
-		super(name, email, deptId, basic);
+	public Mgr(String name, String email, String dept, double basic, double perfBonus) {
+		super(name, email, dept, basic);
 		this.perfBonus=perfBonus;
 		// TODO Auto-generated constructor stub
 	}
