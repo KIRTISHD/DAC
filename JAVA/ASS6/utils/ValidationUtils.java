@@ -20,7 +20,7 @@ public class ValidationUtils {
 	}
 	
 	public static void checkDept(String s) throws Exception{
-		if (s != "Sales" || s != "HR" || s != "RND" ||s != "Marketing" ) {
+		if (!s.matches("Sales|HR|RND|Marketing")) {
 			throw new ThrowErrorClass("No such Department");
 		}
 	}
