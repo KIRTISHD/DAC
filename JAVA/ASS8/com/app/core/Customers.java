@@ -14,6 +14,10 @@ public class Customers {
 		this.regAmt = regAmt;
 		this.regDate = regDate;
 	}
+	
+	public Customers(String email) {
+		this.email = email;
+	}
 
 	@Override
 	public String toString() {
