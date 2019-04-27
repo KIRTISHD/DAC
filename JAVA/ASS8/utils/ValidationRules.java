@@ -36,13 +36,13 @@ public class ValidationRules {
 	
 	public static LocalDate checkRegDate(String dates) throws CustomerHandlingException {
 		LocalDate dt = LocalDate.parse(dates,dtf);
-		//if date given is before 1 april 20xx then financial year end will be in same year
-		if (LocalDate.now().getMonthValue() > 4) {
-			endFinancialYear = LocalDate.of(LocalDate.now().getYear(), 04, 01);
-		}
 		// if date given is after 1 april 20xx then financial year end for him will come next year
-		else {
+		if (LocalDate.now().getMonthValue() > 4) {
 			endFinancialYear = LocalDate.of(LocalDate.now().getYear()+1, 04, 01);
+		}
+		//if date given is before 1 april 20xx then financial year end will be in same year
+		else {
+			endFinancialYear = LocalDate.of(LocalDate.now().getYear(), 04, 01);
 		}
 		
 		if (dt.isAfter(endFinancialYear)) {
