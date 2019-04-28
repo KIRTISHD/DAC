@@ -2,6 +2,7 @@ package com.app.core;
 
 import java.time.LocalDate;
 
+
 public class Customers {
 	private String email;
 	private String password;
@@ -27,7 +28,9 @@ public class Customers {
 
 	@Override
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
+		if (obj instanceof Customers) {
+			return email.equals(((Customers)obj).email);
+		}
+		return false;
 	}
 }
