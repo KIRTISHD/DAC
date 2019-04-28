@@ -1,6 +1,7 @@
 package tester;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 import com.app.core.*;
@@ -19,7 +20,7 @@ public class TestCustomer {
 		int choice;
 		try {
 			boolean exit = true;
-			ArrayList<Customers> cust = new ArrayList<Customers>();
+			List<Customers> cust = new ArrayList<Customers>();
 			Customers cs ;
 			while(exit) {
 				System.out.println("1. Accept new customer");
@@ -33,19 +34,21 @@ public class TestCustomer {
 						System.out.println("Enter email");
 						email=sc.next();
 						checkEmail(email);
-						//checkIfDuplicate(email,cust);
+						checkIfDuplicate(email,cust);
 						System.out.println("Enter password (FORMAT(letters,special symbol(only 1),numbers))");
 						password=sc.next();
 						checkPassword(password);
 						System.out.println("Enter Registration Amount");
 						regamt=sc.nextDouble();
 						checkRegAmount(regamt);
-						System.out.println("Enter Registration Date (Format=DD/M/YYYY)");
+						System.out.println("Enter Registration Date (Format=D/M/YYYY)");
 						date=sc.next();
-						//regd=LocalDate.now();
 						regd=checkRegDate(date);
 						cs = new Customers(email,password,regamt,regd);
 						cust.add(cs);
+						System.out.println("--------------------------------");
+						System.out.println("Registration done Successfully");
+						System.out.println("--------------------------------");
 						break;
 					case 2:
 						System.out.println("All customers are-");
@@ -57,7 +60,7 @@ public class TestCustomer {
 						exit= false;
 						break;
 					default:
-						System.out.println("Chashma lava");
+						System.out.println("Chasma lava");
 						break;
 					}
 					
@@ -67,7 +70,9 @@ public class TestCustomer {
 				
 			}
 		}catch(Exception e) {
+			System.out.println("------------------------------------------");
 			System.out.println(e.getMessage());
+			System.out.println("------------------------------------------");
 		}
 		
 		if(sc!=null)
