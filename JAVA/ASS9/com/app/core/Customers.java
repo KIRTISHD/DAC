@@ -18,6 +18,11 @@ public class Customers {
 	public Customers(String email) {
 		this.email = email;
 	}
+	
+	public Customers(String email, String password) {
+		this.email=email;
+		this.password=password;
+	}
 
 	@Override
 	public String toString() {
@@ -28,9 +33,27 @@ public class Customers {
 	@Override
 	public boolean equals(Object o) {
 		if (o instanceof Customers)
-			//return email == ((Customers) o).email;
 			return email.equals(((Customers) o).email);
 		return false;
 	}
+
+	public LocalDate getRegDate() {
+		return regDate;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
+
+	public int compareTo(Customers o) 
+    {
+		if (o instanceof Customers)
+			return email.compareTo(((Customers) o).email);
+		return false;
+    }
 }
