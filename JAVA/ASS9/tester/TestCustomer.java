@@ -7,10 +7,7 @@ import java.util.Scanner;
 import com.app.core.*;
 import static utils.ValidationRules.*;
 
-
 public class TestCustomer {
-	
-	
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -44,7 +41,6 @@ public class TestCustomer {
 						checkRegAmount(regamt);
 						System.out.println("Enter Registration Date (Format=DD/M/YYYY)");
 						date=sc.next();
-						//regd=LocalDate.now();
 						regd=checkRegDate(date);
 						cs = new Customers(email,password,regamt,regd);
 						cust.add(cs);
@@ -82,12 +78,8 @@ public class TestCustomer {
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+	
 		if(sc!=null)
 			sc.close();
 	}
-
-
-	
-
 }
