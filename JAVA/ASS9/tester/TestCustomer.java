@@ -3,10 +3,14 @@ package tester;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 import com.app.core.*;
+
+import utils.AmountSorter;
+import utils.DateSorter;
+
 import static utils.ValidationRules.*;
 
 
@@ -33,7 +37,10 @@ public class TestCustomer {
 				System.out.println("5. Password Badlu");
 				System.out.println("6. Customer Udva");
 				System.out.println("7. Date dya, Nantar che entries milva");
-				System.out.println("8. Sort Email(natural sorting");
+				System.out.println("8. Sort Email(natural sorting)");
+				System.out.println("9. Sort Date(custom sorting)");
+				System.out.println("10. Sort Amount(custom sorting)");
+				System.out.println("11. Sort Date then Amount(custom sorting)");
 				System.out.println("Kya karna hai sarkar");
 				choice=sc.nextInt();
 				try {
@@ -118,7 +125,34 @@ public class TestCustomer {
 						break;
 						
 					case 8:
+						System.out.println("Sorting in ascending order on Email");
 						Collections.sort(cust);
+						break;
+						
+					case 9:
+						System.out.println("Sorting in ascending order on Date");
+						Collections.sort(cust, new DateSorter());
+						break;
+						
+					case 10:
+						System.out.println("Sorting in ascending order on Amount");
+						Collections.sort(cust, new AmountSorter());
+						break;
+
+					case 11:
+						System.out.println("Sorting in ascending order on Date then Amount");
+						Collections.sort(cust,new Comparator<Customers>() {
+
+							@Override
+							public int compare(Customers o1, Customers o2) {
+								int p = o1.getRegDate().compareTo(o2.getRegDate());
+								if (p ==0) {
+									return ((Double)o1.getRegAmt()).compareTo(o2.getRegAmt());
+								}
+								return p;
+							}
+							
+						});
 						break;
 						
 					default:
