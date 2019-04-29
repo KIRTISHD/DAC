@@ -2,16 +2,22 @@ package tester;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import com.app.core.*;
 import static utils.ValidationRules.*;
 
+
 public class TestCustomer {
+	
+	
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		String email,password,date;
+		int index;
 		double regamt;
 		LocalDate  regd;
 		int choice;
@@ -24,6 +30,10 @@ public class TestCustomer {
 				System.out.println("2. Display all customers");
 				System.out.println("3. Exit");
 				System.out.println("4. Login");
+				System.out.println("5. Password Badlu");
+				System.out.println("6. Customer Udva");
+				System.out.println("7. Date dya, Nantar che entries milva");
+				System.out.println("8. Sort Email(natural sorting");
 				System.out.println("Kya karna hai sarkar");
 				choice=sc.nextInt();
 				try {
@@ -54,17 +64,63 @@ public class TestCustomer {
 					case 3:
 						exit= false;
 						break;
+						
 					case 4:
-						System.out.println("Enter username");
+						System.out.println("Enter email");
 						email=sc.next();
 						checkEmail(email);
 						System.out.println("Enter password");
 						password= sc.next();
 						checkPassword(password);
-						if (login(email,password,cust)) {
-							
+						if (login(email,password,cust)!=-1)
+							System.out.println("Login Successful");
+						break;
+						
+					case 5:
+						System.out.println("Enter email");
+						email=sc.next();
+						checkEmail(email);
+						System.out.println("Enter password");
+						password= sc.next();
+						checkPassword(password);
+						index=login(email,password,cust);
+						if (index!=-1)
+							System.out.println("Login Successful");
+						System.out.println("Enter new password");
+						String newPassword = sc.next();
+						checkPassword(newPassword);
+						cust.get(index).setPassword(newPassword);
+						System.out.println("Password Badalla");
+						break;
+						
+					case 6:
+						System.out.println("Enter email");
+						email=sc.next();
+						checkEmail(email);
+						System.out.println("Enter password");
+						password= sc.next();
+						checkPassword(password);
+						index=login(email,password,cust);
+						if (index!=-1)
+							System.out.println("Login Successful");
+						cust.remove(index);
+						break;
+					
+					case 7:
+						System.out.println("Enter date (Format=DD/M/YYYY)");
+						date = sc.next();
+						regd=checkRegDate(date);
+						for(Customers cc : cust) {
+							if (cc.getRegDate().isAfter(regd)) {
+								System.out.println(cc);
+							}
 						}
 						break;
+						
+					case 8:
+						Collections.sort(cust);
+						break;
+						
 					default:
 						System.out.println("Chashma lava");
 						break;
@@ -78,8 +134,12 @@ public class TestCustomer {
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
-	
+		
 		if(sc!=null)
 			sc.close();
 	}
+
+
+	
+
 }
