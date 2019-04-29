@@ -10,6 +10,7 @@ import cust_excs.CustomerHandlingException;
 
 public class ValidationRules {
 	public static DateTimeFormatter dtf;
+	public static LocalDate beginFinancialYear;
 	public static LocalDate endFinancialYear;
 	
 	static {
@@ -36,17 +37,19 @@ public class ValidationRules {
 	
 	public static LocalDate checkRegDate(String dates) throws CustomerHandlingException {
 		LocalDate dt = LocalDate.parse(dates,dtf);
-		//if date given is before 1 april 20xx then financial year end will be in same year
-		if (LocalDate.now().getMonthValue() > 4) {
-			endFinancialYear = LocalDate.of(LocalDate.now().getYear(), 04, 01);
+		//if date given is before 1 April 20xx then financial year end will be in same year
+		if (LocalDate.now().getMonthValue() >= 4) {
+			beginFinancialYear = LocalDate.of(LocalDate.now().getYear(), 04, 01);
+			endFinancialYear = LocalDate.of(LocalDate.now().getYear()+1, 03, 31);
 		}
-		// if date given is after 1 april 20xx then financial year end for him will come next year
+		// if date given is after 1 April 20xx then financial year end for him will come next year
 		else {
-			endFinancialYear = LocalDate.of(LocalDate.now().getYear()+1, 04, 01);
+			beginFinancialYear = LocalDate.of(LocalDate.now().getYear()-1, 04, 01);
+			endFinancialYear = LocalDate.of(LocalDate.now().getYear(), 03, 31);
 		}
 		
-		if (dt.isAfter(endFinancialYear)) {
-			throw new CustomerHandlingException("After End Year");
+		if (dt.isAfter(endFinancialYear) || dt.isBefore(beginFinancialYear)) {
+			throw new CustomerHandlingException("Account Expired, Parat banva");
 		}
 		return dt;
 	}
@@ -58,9 +61,18 @@ public class ValidationRules {
 		return true;
 	}
 	
-	public static boolean login(String email, String password, List<Customers> cust) {
+	public static int login(String email, String password, List<Customers> cust) throws CustomerHandlingException {
+		Customers cs = new Customers(email,password);
+		int index = cust.indexOf(cs);
+		if (index == -1) {
+			throw new CustomerHandlingException("Register kar ki adhi");
+		}
+		if (password.equals(cust.get(index).getPassword())) {
+			return index;
+		}
+		else
+			throw new CustomerHandlingException("Email barobar, passsword chukla");
 		
-		return false;
 	}
 	
 }
