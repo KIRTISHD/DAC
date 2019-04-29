@@ -2,7 +2,7 @@ package utils;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
+import java.util.Map;
 
 import com.app.core.Customers;
 
@@ -10,8 +10,8 @@ import cust_excs.CustomerHandlingException;
 
 public class ValidationRules {
 	public static DateTimeFormatter dtf;
-	public static LocalDate endFinancialYear;
 	public static LocalDate beginFinancialYear;
+	public static LocalDate endFinancialYear;
 	
 	static {
 		dtf = DateTimeFormatter.ofPattern("d/M/yyyy");
@@ -37,38 +37,40 @@ public class ValidationRules {
 	
 	public static LocalDate checkRegDate(String dates) throws CustomerHandlingException {
 		LocalDate dt = LocalDate.parse(dates,dtf);
-		// if date given is after 1 april 20xx then financial year end for him will come next year
+		//if date given is before 1 April 20xx then financial year end will be in same year
 		if (LocalDate.now().getMonthValue() >= 4) {
 			beginFinancialYear = LocalDate.of(LocalDate.now().getYear(), 04, 01);
 			endFinancialYear = LocalDate.of(LocalDate.now().getYear()+1, 03, 31);
 		}
-		//if date given is before 1 april 20xx then financial year end will begin  last year
+		// if date given is after 1 April 20xx then financial year end for him will come next year
 		else {
 			beginFinancialYear = LocalDate.of(LocalDate.now().getYear()-1, 04, 01);
 			endFinancialYear = LocalDate.of(LocalDate.now().getYear(), 03, 31);
 		}
 		
 		if (dt.isAfter(endFinancialYear) || dt.isBefore(beginFinancialYear)) {
-			throw new CustomerHandlingException("Date not in this Financial Year");
+			throw new CustomerHandlingException("Account Expired, Parat banva");
 		}
 		return dt;
 	}
 	
+	public static boolean checkIfDuplicate(String email, Map<String,Customers> cs) throws CustomerHandlingException{
+		if (cs.containsKey(email))
+			throw new CustomerHandlingException("Parat email disla");
+		return true;
+	}
 	
-	public static boolean checkIfDuplicate(String email, List<Customers> cs) throws CustomerHandlingException {
-		/*Customers cc = new Customers(email);
-		for (Customers cust : cs) {
-			if (cs.equals(cc)) {
-				return false;
-			}
+	public static int login(String email, String password, Map<String,Customers> cs) throws CustomerHandlingException {
+		Customers cst = cs.get(email);
+		if (cst == null) {
+			throw new CustomerHandlingException("Register kar ki adhi");
 		}
-		return true;*/
-		if (cs.contains(new Customers(email))) {
-			throw new CustomerHandlingException("Duplicate email found. Please reenter details again");
+		if (password.equals(cst.getPassword())) {
+			return 0;
 		}
-		else {
-			return false;
-		}
+		else
+			throw new CustomerHandlingException("Email barobar, passsword chukla");
+		
 	}
 	
 }

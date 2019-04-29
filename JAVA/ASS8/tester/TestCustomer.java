@@ -1,74 +1,84 @@
-package utils;
+package tester;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Scanner;
+import com.app.core.*;
+import static utils.ValidationRules.*;
 
-import com.app.core.Customers;
 
-import cust_excs.CustomerHandlingException;
+public class TestCustomer {
+	
+	
 
-public class ValidationRules {
-	public static DateTimeFormatter dtf;
-	public static LocalDate endFinancialYear;
-	public static LocalDate beginFinancialYear;
-	
-	static {
-		dtf = DateTimeFormatter.ofPattern("d/M/yyyy");
-	}
-	
-	public static void checkEmail(String email) throws CustomerHandlingException {
-		if (email.length() < 5 || email.length()>10) {
-			throw new CustomerHandlingException("Email Length not within limits");
-		}
-	}
-	
-	public static void checkPassword(String password) throws CustomerHandlingException {
-		if(!password.matches("[a-z]+[@,%,#,&,*][0-9]+")) {
-			throw new CustomerHandlingException("Password error");
-		}
-	}
-	
-	public static void checkRegAmount(double regAmt) throws CustomerHandlingException {
-		if(regAmt%500 != 0) {
-			throw new CustomerHandlingException("Wrong Amount");
-		}
-	}
-	
-	public static LocalDate checkRegDate(String dates) throws CustomerHandlingException {
-		LocalDate dt = LocalDate.parse(dates,dtf);
-		// if date given is after 1 april 20xx then financial year end for him will come next year
-		if (LocalDate.now().getMonthValue() >= 4) {
-			beginFinancialYear = LocalDate.of(LocalDate.now().getYear(), 04, 01);
-			endFinancialYear = LocalDate.of(LocalDate.now().getYear()+1, 03, 31);
-		}
-		//if date given is before 1 april 20xx then financial year end will begin  last year
-		else {
-			beginFinancialYear = LocalDate.of(LocalDate.now().getYear()-1, 04, 01);
-			endFinancialYear = LocalDate.of(LocalDate.now().getYear(), 03, 31);
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String email,password,date;
+		double regamt;
+		LocalDate  regd;
+		int choice;
+		try {
+			boolean exit = true;
+			List<Customers> cust = new ArrayList<Customers>();
+			Customers cs ;
+			while(exit) {
+				System.out.println("1. Accept new customer");
+				System.out.println("2. Display all customers");
+				System.out.println("3. Exit");
+				System.out.println("Kya karna hai sarkar");
+				choice=sc.nextInt();
+				try {
+					switch(choice) {
+					case 1:
+						System.out.println("Enter email");
+						email=sc.next();
+						checkEmail(email);
+						checkIfDuplicate(email,cust);
+						System.out.println("Enter password (FORMAT(letters,special symbol(only 1),numbers))");
+						password=sc.next();
+						checkPassword(password);
+						System.out.println("Enter Registration Amount");
+						regamt=sc.nextDouble();
+						checkRegAmount(regamt);
+						System.out.println("Enter Registration Date (Format=D/M/YYYY)");
+						date=sc.next();
+						regd=checkRegDate(date);
+						cs = new Customers(email,password,regamt,regd);
+						cust.add(cs);
+						System.out.println("--------------------------------");
+						System.out.println("Registration done Successfully");
+						System.out.println("--------------------------------");
+						break;
+					case 2:
+						System.out.println("All customers are-");
+						for(Customers cc : cust) {
+							System.out.println(cc);
+						}
+						break;
+					case 3:
+						exit= false;
+						break;
+					default:
+						System.out.println("Chasma lava");
+						break;
+					}
+					
+				}catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+				
+			}
+		}catch(Exception e) {
+			System.out.println("------------------------------------------");
+			System.out.println(e.getMessage());
+			System.out.println("------------------------------------------");
 		}
 		
-		if (dt.isAfter(endFinancialYear) || dt.isBefore(beginFinancialYear)) {
-			throw new CustomerHandlingException("Date not in this Financial Year");
-		}
-		return dt;
+		if(sc!=null)
+			sc.close();
 	}
+
 	
-	
-	public static boolean checkIfDuplicate(String email, List<Customers> cs) throws CustomerHandlingException {
-		/*Customers cc = new Customers(email);
-		for (Customers cust : cs) {
-			if (cs.equals(cc)) {
-				return false;
-			}
-		}
-		return true;*/
-		if (cs.contains(new Customers(email))) {
-			throw new CustomerHandlingException("Duplicate email found. Please reenter details again");
-		}
-		else {
-			return false;
-		}
-	}
-	
+
 }
