@@ -1,0 +1,8 @@
+Database -
+
+create database javatry;
+use javatry;
+create table accounts(id int(3) auto_increment primary key ,name varchar(20),type varchar(10),bal double);
+insert into accounts (name,type,bal) values ('aa','sav',1500);
+insert into accounts (name,type,bal) values ('bb','sav',2500);
+
