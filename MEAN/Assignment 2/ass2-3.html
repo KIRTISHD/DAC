@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">
+        var click = 0
+        var emp = new Array();
+            function dch(){
+                emp[click] = new Object();
+                emp[click].id=parseInt(document.getElementById("iid").value);
+                emp[click].name=document.getElementById("iname").value;
+                emp[click].salary=parseInt(document.getElementById("isal").value);
+                //var result = "Sorted array is - "+arr;
+                //document.getElementById("ss").innerHTML = result;
+                document.getElementById("iid").value = "";
+                document.getElementById("iname").value = "";
+                document.getElementById("isal").value = "";
+                click++
+            }
+
+            function fillTable() {
+                var tt = "";
+                tt+= "<table> <tr> <th> EmployeeId </th> <th> EmployeeName </th> <th> EmployeeSalary </th></tr>";
+                for (var i=0;i < click; i++){
+                    tt+="<tr>";
+                    tt+="<td> " + emp[i].id + "</td>";
+                    tt+="<td> " + emp[i].name + "</td>";
+                    tt+="<td> " + emp[i].salary + "</td>";  
+                    tt+="</tr>";
+                }
+                tt+= "</table>"
+                document.getElementById("ss").innerHTML = tt;
+            }
+    </script>
+       
+    </head>
+    <body>
+    Employee Id:<input type="number" id="iid"/> <br/><br/>
+    Employee Name:<input type="text" id="iname"/> <br/><br/>
+    Employee Salary:<input type="number" id="isal"/> <br/><br/>
+    <input type="button" value="DON'T CLICK HERE" onclick="dch()" />
+    <input type="button" value="TABLE" onclick="fillTable()" />
+	 
+    <div id="ss"> </div>
+        
+    </body>
+   
+</html>
