@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function myTable() {
+            var mul = 0;
+            var num1 = parseInt(document.getElementById("num_table").value);
+            for (var i=1; i<= 50; i++){
+                var mulShow="";
+                mul = i * num1;
+                mulShow += num1 + ' * ' + i + ' = ' + mul +"<br/>";
+          document.getElementById("ans").innerHTML+=mulShow;
+                //document.write(mulShow);
+            }
+        }
+    </script>
+</head>
+<body>
+	<h2 align="center" >Garibo ka Multiplication Table</h2>
+	<div class="some" align="center">
+		Enter first number : <input type="number" id="num_table" required/> <br/> <br/>
+		<input type="button" name="add" value="Add" onclick="myTable()"/><br/> <br/>
+        Answer is : <br/>
+        <p id="ans" >
+        </p> 
+	</div>
+</body>
+</html>
