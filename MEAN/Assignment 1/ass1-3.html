@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function myFind() {
+            var f;
+            var str1 = document.getElementById("str1").value;
+            var str2 = document.getElementById("str2").value;
+            for (var i=0; i< (str1.length-str2.length+1) ; i++){
+                if(  (f=str1.indexOf(str2,i)) != -1){
+            	  if (f != i){
+                	  i=f;
+                  }
+                   var show="";
+                    show += str2 + ' found at location ' + i +"<br/>";
+                    document.getElementById("ans").innerHTML+=show;
+                  
+              }                
+            }
+        }
+    </script>
+</head>
+<body>
+	<h2 align="center" >Garibo ka String Finder</h2>
+	<div class="some" align="center">
+		Enter first string : <input type="text" id="str1" required/> <br/> <br/>
+        Enter second string : <input type="text" id="str2" required/> <br/> <br/>
+		<input type="button" name="find" value="Find String" onclick="myFind()"/><br/> <br/>
+        Answer is : <br/>
+        <p id="ans" >
+        </p> 
+	</div>
+</body>
+</html>
