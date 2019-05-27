@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function myAdd(){
+            var num1 = parseInt(document.getElementById("fnum").value);
+            var num2 = parseInt(document.getElementById("snum").value);
+            var addNum = num1 + num2;
+           // document.getElementById("ans").innerHTML=addNum;
+           document.getElementById("ans").value=addNum;
+        }
+         function mySub(){
+            var sub_num=0;
+            var num1 = parseInt(document.getElementById("fnum").value);
+            var num2 = parseInt(document.getElementById("snum").value);
+            sub_num = num1 - num2;
+           document.getElementById("ans").value=sub_num;
+        }
+        function myMul(){
+            var mul_num=0;
+            var num1 = parseInt(document.getElementById("fnum").value);
+            var num2 = parseInt(document.getElementById("snum").value);
+            mul_num = num1 * num2;
+           document.getElementById("ans").value=mul_num;
+        }
+        function myDiv(){
+            var div_num=0;
+            var num1 = parseInt(document.getElementById("fnum").value);
+            var num2 = parseInt(document.getElementById("snum").value);
+            div_num = num1 / num2;
+           document.getElementById("ans").value=div_num;
+        }
+    </script>
+</head>
+<body>
+	<h2 align="center" >Garibo ka calculator</h2>
+	<div class="some" align="center">
+		Enter first number : <input type="number" id="fnum" required/> <br/> <br/>
+        Enter second number : <input type="number" id="snum" required/> <br/> <br/>
+		<input type="button" name="add" value="Add" onclick="myAdd()" />    <input type="button" name="sub" value="Subtract" onclick="mySub()" />     <input type="button" name="mul" value="Multiply" onclick="myMul()" />       <input type="button" name="divide" value="Divide" onclick="myDiv()" /><br/> <br/>
+        Answer is : <input type="text" id="ans" /> 
+	</div>
+</body>
+</html>
