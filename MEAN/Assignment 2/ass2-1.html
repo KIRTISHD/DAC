@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+       
+            yaha{
+                color: red;
+            }
+        </style>
+       
+    </head>
+    <body>
+   
+    <p style="color:red;" id ="yaha"></p>
+	 <p style="color:red;" id ="yaha1"></p>
+        <script type="text/javascript">
+                var d = new Date();
+                var weekdays=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+           
+                var month=["January","February","March","April","May","June","July","August","September","October","November","December"];
+           
+            function getSession(d){
+                console.log(d.getHours());
+                if (d.getHours() < 12){
+                    return "Good Morning";
+                }
+                else if (d.getHours() < 16){
+                    return "Good Afternoon";
+                }
+                else if (d.getHours() < 20){
+                    return "Good Evening";
+                }
+                else{
+                    return "Good  Night";
+                }
+            }
+           
+            function getdiff(d){
+                var lastDay = "31/12/"+d.getFullYear();
+                
+                //var last = new Date(lastDay);
+				var last = new Date(new Date().getFullYear(), 11, 31);
+				console.log("last day is "+last);
+				console.log("d is -"+d);
+				var datedif = Math.abs(last.getTime() - d.getTime());
+				console.log("dif is -" +lastDay);
+                var diff = Math.floor(datedif/(1000*60*60*24));
+                console.log(diff);
+                return diff;
+               
+            }
+           
+            var finalOutput1="";
+            finalOutput1 += 'Today is '+ weekdays[d.getDay()] + ', '+ d.getDate()+' '+month[d.getMonth()]+ ' '+ d.getFullYear() + ', Welcome, and ' + getSession(d) + ' to you';
+           
+            var finalOutput2="";
+            finalOutput2 += 'Number of days left till end of year : '+ getdiff(d);
+           
+            document.getElementById("yaha").innerHTML=finalOutput1;
+			document.getElementById("yaha1").innerHTML=finalOutput2;
+           // document.getElementsByClassName("mesg").item[0].innerHTML=finalOutput;
+           
+           
+        </script>
+    </body>
+   
+</html>
