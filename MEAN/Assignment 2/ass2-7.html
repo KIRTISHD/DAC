@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">
+        var click = 0
+        var emp = new Array();
+            function dch(){
+                
+                s1=document.getElementById("s").value;
+                s2=document.getElementById("ss").value;
+                s3=document.getElementById("rs").value;
+                if (document.getElementById("search").checked){
+                    if(s1.includes(s2)){
+                        document.getElementById("rs").value = "true";
+                    }
+                    else{
+                        document.getElementById("rs").value = "false"
+                    }
+                }
+                if (document.getElementById("upper").checked){
+                    var temp = document.getElementById("s").value;
+                    temp = temp.toUpperCase();
+                    document.getElementById("ss").value=temp;
+                }
+                if (document.getElementById("lower").checked){
+                    var temp = document.getElementById("s").value;
+                    temp = temp.toLowerCase();
+                    document.getElementById("ss").value=temp;
+                }
+                if (document.getElementById("trim").checked){
+                    var temp = document.getElementById("s").value;
+                    temp = temp.trim();
+                    document.getElementById("ss").value=temp;
+                }
+                if (document.getElementById("concat").checked){
+                    var temp1 = document.getElementById("s").value;
+                    var temp2 = document.getElementById("ss").value;
+                    temp3 = temp1.concat(temp2);
+                    document.getElementById("rs").value=temp3;
+                }
+                if (document.getElementById("replace").checked){
+                    var temp1 = document.getElementById("s").value;
+                    var temp2 = document.getElementById("ss").value;
+                    var temp3 = document.getElementById("rs").value;
+                    temp1 = temp1.replace(temp2,temp3);
+                    document.getElementById("s").value=temp1;
+                }
+            }
+
+    </script>
+       
+    </head>
+    <body>
+    Enter String:  <input type="text" id="s"/> <br/><br/>
+    Enter Sub String: <input type="text" id="ss"/> <br/><br/>
+    Replace with String:<input type="text" id="rs"/> <br/><br/>
+    <input type="radio" name="op" value="search" id="search" />: Search Substring in main string
+    <input type="radio" name="op" value="upper" id="upper"/>: To Upper Case
+    <input type="radio" name="op" value="lower" id="lower" />: To Lower Case
+    <input type="radio" name="op" value="trim" id="trim"/>: Trim spaces
+    <input type="radio" name="op" value="concat" id="concat"/>: Concatenate
+    <input type="radio" name="op" value="replace" id="replace" />: Replace<br/><br/>
+    <input type="button" value="DON'T CLICK HERE" onclick="dch()" />
+	 
+    <div id="ss"> </div>
+        
+    </body>
+   
+</html>
