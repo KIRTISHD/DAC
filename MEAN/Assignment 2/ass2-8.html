@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">
+            function dch(){
+               
+                var arr=parseInt(document.getElementById("i1").value);
+                if (arr < 0 || arr > 1000){
+                    document.getElementById("ss").innerHTML = "Entered number is out of range";
+                }
+                else{
+                    var x = 0;
+                    var rem = 0;
+                    var num = arr;
+                    while(num!=0){
+                        rem = num%10;
+                        num = num/10;
+                        x = x+rem;
+                    }
+                    document.getElementById("ss").innerHTML = x;
+                }
+            }
+    </script>
+       
+    </head>
+    <body>
+    Enter a +ve number less than 1000:<input type="number" id="i1"/> <br/><br/>
+	<input type="button" value="Dont' CLICK HERE" onclick="dch()" />
+	 
+    <p id="ss"> </p>
+        
+    </body>
+   
+</html>
