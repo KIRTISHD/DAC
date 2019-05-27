@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">
+            function dch(){
+                var arr = new Array();
+                arr[0]=document.getElementById("i1").value;
+                arr[1]=document.getElementById("i2").value;
+                arr[2]=document.getElementById("i3").value;
+                arr[3]=document.getElementById("i4").value;
+                arr[4]=document.getElementById("i5").value;
+                arr.sort();
+                console.log(arr[0]);
+                console.log(arr);
+                var result = "Sorted array is - "+arr;
+                document.getElementById("ss").innerHTML = result;
+            }
+    </script>
+       
+    </head>
+    <body>
+    First input:<input type="text" id="i1"/> <br/><br/>
+    Second input:<input type="text" id="i2"/> <br/><br/>
+    Third input:<input type="text" id="i3"/> <br/><br/>
+    Fourth input:<input type="text" id="i4"/> <br/><br/>
+    Fifth input:<input type="text" id="i5"/> <br/><br/>
+	<input type="button" value="Dont' CLICK HERE" onclick="dch()" />
+	 
+    <p id="ss"> </p>
+        
+    </body>
+   
+</html>
