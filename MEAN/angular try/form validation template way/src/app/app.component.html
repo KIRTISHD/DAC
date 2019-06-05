@@ -1,0 +1,15 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<form (ngSubmit) = "onSubmit(form1)" #form1="ngForm">
+  <input type="text" [(ngModel)]="user.name" minlength="6"  name="username" #name = "ngModel" required>
+  <div *ngIf="name.invalid && (name.dirty || name.touched)">
+    <p *ngIf="name.hasError('required')">
+      Username is Required field
+    </p>
+    <p *ngIf="name.hasError('minlength')">
+      Min length should be 6
+    </p>
+  </div>
+  <input type="submit" name = "submit" value="Submit" [disabled]="form1.invalid">
+</form>
+
+<router-outlet></router-outlet>

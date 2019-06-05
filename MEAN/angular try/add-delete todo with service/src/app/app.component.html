@@ -1,0 +1,34 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<!--
+<form (ngSubmit) = "onSubmit(form1)" #form1="ngForm">
+  <input type="text" [(ngModel)]="user.name" minlength="6"  name="username" #name = "ngModel" required>
+  <div *ngIf="name.invalid && (name.dirty || name.touched)">
+    <p *ngIf="name.hasError('required')">
+      Username is Required field
+    </p>
+    <p *ngIf="name.hasError('minlength')">
+      Min length should be 6
+    </p>
+  </div>
+  <input type="submit" name = "submit" value="Submit" [disabled]="form1.invalid">
+</form>
+-->
+<!--
+<ul>
+  <li *ngFor="let s of myData">
+    {{s}}
+  </li>
+</ul>
+<ul>
+  <li *ngFor="let s of myData2">
+    {{s.name}} -- {{s.mobile}}
+  </li>
+</ul>
+-->
+<!--
+<h1> {{title}}</h1>
+<input type="text" [value]="title" (input)="onInput($event.target.value)">
+-->
+<app-todoapp></app-todoapp>
+<router-outlet></router-outlet>
