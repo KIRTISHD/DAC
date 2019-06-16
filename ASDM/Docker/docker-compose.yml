@@ -1,0 +1,9 @@
+version: "3"
+services:
+    apache:
+         image: 
+            httpd
+         ports:
+          - 7979:80
+         volumes:
+          - ./app/:/usr/local/apache2/htdocs/
