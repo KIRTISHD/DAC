@@ -1,6 +1,0 @@
-F:\codes\C#\Projects\Assignment 1\Assignment 1\bin\Debug\Assignment 1.exe.config
-F:\codes\C#\Projects\Assignment 1\Assignment 1\bin\Debug\Assignment 1.exe
-F:\codes\C#\Projects\Assignment 1\Assignment 1\bin\Debug\Assignment 1.pdb
-F:\codes\C#\Projects\Assignment 1\Assignment 1\obj\Debug\Assignment 1.csprojResolveAssemblyReference.cache
-F:\codes\C#\Projects\Assignment 1\Assignment 1\obj\Debug\Assignment 1.exe
-F:\codes\C#\Projects\Assignment 1\Assignment 1\obj\Debug\Assignment 1.pdb
