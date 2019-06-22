@@ -6,24 +6,48 @@ using System.Threading.Tasks;
 
 namespace Assignment_4.Product
 {
-    class Courier : ICourierProduct
+    class Courier
     {
         private string courierName;
         private string courierAddress;
 
-        public string GetFromAddress()
+        public string CourierName
         {
-            throw new NotImplementedException();
+            get
+            {
+                return courierName;
+            }
+
+            set
+            {
+                courierName = value;
+            }
         }
 
-        public string GetToAddress()
+        public string CourierAddress
         {
-            throw new NotImplementedException();
+            get
+            {
+                return courierAddress;
+            }
+
+            set
+            {
+                courierAddress = value;
+            }
         }
 
-        public string GetProductType()
+        public Courier(string courierName, string courierAddress)
         {
-            throw new NotImplementedException();
+            this.CourierName = courierName;
+            this.CourierAddress = courierAddress;
+        }
+
+        public void ReceiveProduct(ICourierProduct cv)
+        {
+            cv.GetToAddress();
+            cv.GetFromAddress();
+            cv.GetProductType();
         }
     }
 }

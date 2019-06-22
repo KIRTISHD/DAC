@@ -44,6 +44,13 @@
   <ItemGroup>
     <Compile Include="Loan\HomeLoan.cs" />
     <Compile Include="Loan\Loan.cs" />
+    <Compile Include="Loan\LoanMain.cs" />
+    <Compile Include="Loan\VehicleLoan.cs" />
+    <Compile Include="Product\Courier.cs" />
+    <Compile Include="Product\CourierMain.cs" />
+    <Compile Include="Product\ICourierProduct.cs" />
+    <Compile Include="Product\ProductBook.cs" />
+    <Compile Include="Product\ProductMobile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

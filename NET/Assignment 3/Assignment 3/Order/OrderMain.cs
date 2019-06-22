@@ -11,10 +11,10 @@ namespace Assignment_3.Order
         public static void Main(string[] ss)
         {
             Order od = new Order(1, "Ganya", 200, 5);
-            Console.WriteLine("Total amount is->" + od.GetOrderValue());
+            Console.WriteLine("Total order amount is->" + od.GetOrderValue());
 
             Order od1 = new Order_Overseas(1, "Ganya", 200, 5);
-            Console.WriteLine("Total amount is->" + od1.GetOrderValue());
+            Console.WriteLine("Total order-Overseas amount is->" + od1.GetOrderValue());
            // od1.xyz();
             Console.ReadKey();
 

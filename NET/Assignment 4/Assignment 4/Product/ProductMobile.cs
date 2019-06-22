@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_4.Product
 {
-    class ProductMobile
+    class ProductMobile : ICourierProduct
     {
         private int iD;
         private int price;
@@ -90,6 +90,41 @@ namespace Assignment_4.Product
             {
                 os = value;
             }
+        }
+
+        public void GetFromAddress()
+        {
+            Console.WriteLine("this is from mobile address");
+        }
+
+        public void GetToAddress()
+        {
+            Console.WriteLine("this is  to mobile address");
+        }
+
+        public void GetProductType()
+        {
+            Console.WriteLine("this is mobile.");
+        }
+
+        public void Start()
+        {
+            Console.WriteLine("Chalu jhala mobile");
+        }
+
+        public void Stop()
+        {
+            Console.WriteLine("Mobile band jhala");
+        }
+
+        public void Call()
+        {
+            Console.WriteLine("Ganya call lav");
+        }
+
+        public void SendMsg()
+        {
+            Console.WriteLine("Gnaya range aali, message pathav");
         }
     }
 }

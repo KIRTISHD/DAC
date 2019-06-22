@@ -8,7 +8,7 @@ namespace Assignment_3.Order
 {
     class Order_Overseas : Order
     {
-
+        
         public Order_Overseas()
         {
 
@@ -26,5 +26,7 @@ namespace Assignment_3.Order
             double amount = ItemPrice * Quantity;
             return (amount + (amount*0.10));
         }
+        
+
     }
 }

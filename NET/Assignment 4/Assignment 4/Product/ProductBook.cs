@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_4.Product
 {
-    class ProductBook
+    class ProductBook : ICourierProduct
     {
         private int iD;
         private string authorName;
@@ -91,6 +91,21 @@ namespace Assignment_4.Product
             {
                 pages = value;
             }
+        }
+
+        public void GetFromAddress()
+        {
+            Console.WriteLine("this is from book address");
+        }
+
+        public void GetToAddress()
+        {
+            Console.WriteLine("this is  to book address");
+        }
+
+        public void GetProductType()
+        {
+            Console.WriteLine("this is book.");
         }
     }
 }

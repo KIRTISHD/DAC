@@ -8,6 +8,30 @@ namespace Assignment_4.Loan
 {
     class VehicleLoan : Loan
     {
+        //private double rate = 8;
+
+        public VehicleLoan() { }
+
+        public VehicleLoan(int loanID, string customerName, string customerEmailID, int customerMobileNo, int loanAmount, int duration, double rate)
+       : base(loanID, customerName, customerEmailID, customerMobileNo, loanAmount, duration, rate)
+        {
+            //this.rate = rate;
+        }
+
+       /* public double Rate
+        {
+            get
+            {
+                return rate;
+            }
+
+            set
+            {
+                rate = value;
+            }
+        }
+        */
+
         public override double PayEMI(int amount)
         {
             double numerator = LoanAmount * Rate * Math.Pow((1 + Rate), (Duration / 12));

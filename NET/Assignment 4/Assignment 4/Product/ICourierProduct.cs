@@ -8,8 +8,8 @@ namespace Assignment_4.Product
 {
     interface ICourierProduct
     {
-        string GetFromAddress();
-        string GetToAddress();
-        string GetProductType();
+        void GetFromAddress();
+        void GetToAddress();
+        void GetProductType();
     }
 }

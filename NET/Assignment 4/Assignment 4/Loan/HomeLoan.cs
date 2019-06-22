@@ -8,6 +8,34 @@ namespace Assignment_4.Loan
 {
     class HomeLoan : Loan
     {
+
+        public HomeLoan()
+        {
+
+        }
+
+        public HomeLoan(int loanID, string customerName, string customerEmailID, int customerMobileNo, int loanAmount, int duration, double rate)
+            :base (loanID,customerName, customerEmailID, customerMobileNo, loanAmount, duration, rate)
+        {
+          //  this.rate = rate;
+        }
+
+       // private double rate = 10;
+       /*
+        public double Rate
+        {
+            get
+            {
+                return rate;
+            }
+
+            set
+            {
+                rate = value;
+            }
+        }
+        */
+
         public override double PayEMI(int amount)
         {
             double numerator = LoanAmount * Rate * Math.Pow((1 + Rate) , (Duration / 12));
