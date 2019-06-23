@@ -8,6 +8,7 @@ namespace Assignment_5.Calc
 {
     class Calc
     {
+        /*
         static void Main(string[] args)
         {
             Calculator.Calculator cc = new Calculator.Calculator();
@@ -54,5 +55,7 @@ namespace Assignment_5.Calc
             Console.WriteLine("Ganya program chalala");
             Console.ReadLine();
         }
+
+    */
     }
 }
